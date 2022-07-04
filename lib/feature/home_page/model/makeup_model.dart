@@ -1,8 +1,6 @@
-// To parse this JSON data, do
-//
-//     final makeUpModel = makeUpModelFromJson(jsonString);
-
 import 'dart:convert';
+
+import 'package:vexana/vexana.dart';
 
 List<MakeUpModel> makeUpModelFromJson(String str) => List<MakeUpModel>.from(
     json.decode(str).map((x) => MakeUpModel.fromJson(x)));
@@ -10,7 +8,7 @@ List<MakeUpModel> makeUpModelFromJson(String str) => List<MakeUpModel>.from(
 String makeUpModelToJson(List<MakeUpModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class MakeUpModel {
+class MakeUpModel extends INetworkModel {
   MakeUpModel({
     this.id,
     this.brand,
@@ -98,6 +96,32 @@ class MakeUpModel {
         "product_colors":
             List<dynamic>.from(productColors?.map((x) => x.toJson()) ?? []),
       };
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return MakeUpModel(
+      id: json["id"],
+      brand: json["brand"],
+      name: json["name"],
+      price: json["price"],
+      priceSign: json["price_sign"],
+      currency: json["currency"],
+      imageLink: json["image_link"],
+      productLink: json["product_link"],
+      websiteLink: json["website_link"],
+      description: json["description"],
+      rating: json["rating"] == null ? null : json["rating"].toDouble(),
+      category: json["category"] == null ? null : json["category"],
+      productType: json["product_type"],
+      tagList: List<dynamic>.from(json["tag_list"].map((x) => x)),
+      createdAt: DateTime.parse(json["created_at"]),
+      updatedAt: DateTime.parse(json["updated_at"]),
+      productApiUrl: json["product_api_url"],
+      apiFeaturedImage: json["api_featured_image"],
+      productColors: List<ProductColor>.from(
+          json["product_colors"].map((x) => ProductColor.fromJson(x))),
+    );
+  }
 }
 
 enum Brand { MAYBELLINE }
