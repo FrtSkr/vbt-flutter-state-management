@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_management_first_project/feature/home_page/view/homepage_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,16 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter State Management",
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Flutter State Management"),
-        ),
-        body: Center(
-          child: Container(
-            child: Text("Hello World"),
-          ),
-        ),
-      ),
+      home: HomePage(),
     );
   }
 }
