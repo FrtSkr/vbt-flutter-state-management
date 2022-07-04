@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_state_management_first_project/core/base/baseview_model.dart';
 import 'package:flutter_state_management_first_project/feature/home_page/model/makeup_model.dart';
 import 'package:flutter_state_management_first_project/feature/home_page/service/makeup_service.dart';

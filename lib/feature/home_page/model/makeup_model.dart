@@ -1,12 +1,4 @@
-import 'dart:convert';
-
 import 'package:vexana/vexana.dart';
-
-List<MakeUpModel> makeUpModelFromJson(String str) => List<MakeUpModel>.from(
-    json.decode(str).map((x) => MakeUpModel.fromJson(x)));
-
-String makeUpModelToJson(List<MakeUpModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class MakeUpModel extends INetworkModel {
   MakeUpModel({
@@ -32,7 +24,7 @@ class MakeUpModel extends INetworkModel {
   });
 
   int? id;
-  Brand? brand;
+  String? brand;
   String? name;
   String? price;
   dynamic priceSign;
@@ -45,8 +37,8 @@ class MakeUpModel extends INetworkModel {
   String? category;
   String? productType;
   List<dynamic>? tagList;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  String? createdAt;
+  String? updatedAt;
   String? productApiUrl;
   String? apiFeaturedImage;
   List<ProductColor>? productColors;
@@ -66,8 +58,8 @@ class MakeUpModel extends INetworkModel {
         category: json["category"] == null ? null : json["category"],
         productType: json["product_type"],
         tagList: List<dynamic>.from(json["tag_list"].map((x) => x)),
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        createdAt: json["created_at"],
+        updatedAt: json["updated_at"],
         productApiUrl: json["product_api_url"],
         apiFeaturedImage: json["api_featured_image"],
         productColors: List<ProductColor>.from(
@@ -114,8 +106,8 @@ class MakeUpModel extends INetworkModel {
       category: json["category"] == null ? null : json["category"],
       productType: json["product_type"],
       tagList: List<dynamic>.from(json["tag_list"].map((x) => x)),
-      createdAt: DateTime.parse(json["created_at"]),
-      updatedAt: DateTime.parse(json["updated_at"]),
+      createdAt: json["created_at"],
+      updatedAt: json["updated_at"],
       productApiUrl: json["product_api_url"],
       apiFeaturedImage: json["api_featured_image"],
       productColors: List<ProductColor>.from(
@@ -123,8 +115,6 @@ class MakeUpModel extends INetworkModel {
     );
   }
 }
-
-enum Brand { MAYBELLINE }
 
 class ProductColor {
   ProductColor({
